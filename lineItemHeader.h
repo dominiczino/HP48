@@ -10,7 +10,7 @@ private:
     float value;
     std::map<std::string,float> units;
     lineItem convertUnitSimple(std::string newUnit);
-    lineItem convertUnitDerived(std::string newUnit);
+    
 
 
 public:
@@ -22,15 +22,21 @@ public:
 
     void setUnitDict(std::map<std::string,float> newUnits);
 
-    void test();
-
     lineItem convertUnit(std::string newUnit);
 
     lineItem reduceToBaseUnits();
 
     void cleanUpUnitDict();
 
-    lineItem operator*(lineItem* const other);
+    lineItem operator*(lineItem const other);
+
+    lineItem operator+(lineItem const other);
+
+    lineItem operator-(lineItem const other);
+
+    lineItem operator/(lineItem const other);
+
+    lineItem convertUnitDerived(std::string newUnit);
 
 };
 
