@@ -57,6 +57,25 @@ const byte keyNumLookup[8][8] = {{34, 24, 14, 44, 85, 54, 75, 65},
 
 #define serial_debug 1
 
+enum Mode {
+  MODE_ENTRY,
+  MODE_ERROR,
+  MODE_IDLE,
+  MODE_PROCESSING,
+  MODE_MENU
+};
+
+enum FunctionKeyDumps {
+  F_UNIT
+}
+
+struct {
+  string lineEntry = "";
+  Mode mode = MODE_PROCESSING;
+  byte[4] FunctionKeyState = {0,0,0,0};
+  MyStack stack;
+  
+} machineState;
 
 
 
@@ -132,5 +151,4 @@ void loop() {
   tft.setTextSize(3);
   tft.setCursor(50,50);
   tft.println(String(pollKeyboard()));
-
 }
